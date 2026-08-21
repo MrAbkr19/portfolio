@@ -1,0 +1,19 @@
+#about{
+    background-color: var(--bg-2);
+}
+.title{
+    font-family: var(--font-title);
+    font-weight: lighter;
+    font-size: 4em;
+    color: transparent;
+    font-family: var(--font-subtitle);
+  -webkit-text-stroke: 1px white;
+}
+.moi{
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
+.cadre-moi{
+    height: 70%;
+}

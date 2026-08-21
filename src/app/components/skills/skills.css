@@ -1,0 +1,75 @@
+/* Défilement continu vers la gauche (Front-End) */
+@keyframes marquee-scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-100% / 3));
+  }
+}
+
+/* Défilement continu vers la droite (UI/UX Design) */
+@keyframes marquee-scroll-right {
+  0% {
+    transform: translateX(calc(-100% / 3));
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.marquee-wrapper {
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(0, 0, 0, 1) 10%,
+    rgba(0, 0, 0, 1) 90%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(0, 0, 0, 1) 10%,
+    rgba(0, 0, 0, 1) 90%,
+    transparent 100%
+  );
+}
+
+.marquee-track-left {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: marquee-scroll-left 30s linear infinite;
+}
+
+.marquee-track-right {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: marquee-scroll-right 30s linear infinite;
+}
+
+/* Pause fluide au survol */
+.marquee-wrapper:hover .marquee-track-left,
+.marquee-wrapper:hover .marquee-track-right {
+  animation-play-state: paused;
+}
+
+/* Élément icône + titre épuré */
+.skill-item {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.skill-item:hover {
+  transform: translateY(-4px) scale(1.1);
+}
+
+/* Grand titre avec contour typographique */
+.title {
+  font-family: var(--font-title);
+  font-weight: lighter;
+  font-size: 4em;
+  color: transparent;
+  font-family: var(--font-subtitle);
+  -webkit-text-stroke: 1px white;
+}

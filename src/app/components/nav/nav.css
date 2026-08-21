@@ -1,0 +1,20 @@
+#navbar{
+    display: flex;
+    justify-content: center ;
+    align-items: center;
+    gap: 80px;
+    padding: 20px;
+    font-family: montserrat;
+    color: wheat;
+    /* filter: opacity(0.9); */
+    /* background-color: blue; */
+}
+ul{
+    display: flex;
+    gap:10px
+}
+.logo{
+    font-weight: bold;
+    font-size: 1.5em ;
+    color: white;
+}

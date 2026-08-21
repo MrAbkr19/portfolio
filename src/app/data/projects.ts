@@ -1,0 +1,77 @@
+// Interface définissant la structure d'un projet du portfolio
+export interface Project {
+  id: number;
+  title: string;
+  category: string;
+  description: string;
+  techs: string[];
+  highlights?: string[];
+  icon: string;
+  demoUrl: string;
+  githubUrl: string;
+  image: string;
+  gradient?: string;
+  color?: string;
+}
+
+// Données des projets présentés dans le carrousel
+export const projects: Project[] = [
+  {
+    id: 1,
+    title: 'FreeBosh',
+    category: 'Plateforme Académique & E-Learning',
+    description: 'Plateforme centralisée de diffusion de cours et d\'informations académiques pour étudiants et enseignants.',
+    techs: ['TypeScript', 'Angular', 'TailwindCSS', 'Vercel'],
+    highlights: ['Diffusion de cours', 'Gestion académique', 'Déploiement Vercel'],
+    icon: 'fa-solid fa-graduation-cap',
+    demoUrl: 'https://free-bosh.vercel.app',
+    githubUrl: 'https://github.com/MrAbkr19/freeBosh',
+    image: 'images/freebosh.png',
+    gradient: 'from-blue-500/20 via-cyan-500/10 to-transparent',
+    color: '#3b82f6'
+  },
+  {
+    id: 2,
+    title: 'Délices de Douala',
+    category: 'Guide Culinaire & Avis',
+    description: 'Application de découverte des restaurants emblématiques de Douala avec système d\'évaluation et notation 5 étoiles.',
+    techs: ['TypeScript', 'Angular', 'TailwindCSS', 'Vercel'],
+    highlights: ['Notation 5 étoiles', 'Guide gastronomique', 'Interface intuitive'],
+    icon: 'fa-solid fa-utensils',
+    demoUrl: 'https://delices-de-douala-zeta.vercel.app',
+    githubUrl: 'https://github.com/MrAbkr19/Delices-de-douala-tp',
+    image: 'images/delices.png',
+    gradient: 'from-orange-500/20 via-amber-500/10 to-transparent',
+    color: '#f97316'
+  },
+  {
+    id: 3,
+    title: 'ABK Watch Shop',
+    category: 'E-Commerce & Vente de Montres',
+    description: 'Boutique en ligne moderne pour catalogue et vente de montres de luxe avec panier réactif et design soigné.',
+    techs: ['TypeScript', 'Angular', 'TailwindCSS', 'Vercel'],
+    highlights: ['Catalogue de montres', 'Panier réactif', 'Expérience fluide'],
+    icon: 'fa-solid fa-clock',
+    demoUrl: 'https://abk-shop.vercel.app',
+    githubUrl: 'https://github.com/MrAbkr19/Shop-app',
+    image: 'images/shop.png',
+    gradient: 'from-emerald-500/20 via-teal-500/10 to-transparent',
+    color: '#10b981'
+  },
+  {
+    id: 4,
+    title: 'Le Calao Doré',
+    category: 'Restauration & Commande en ligne',
+    description: 'Application web gastronomique de commande et réservation avec menu dynamique et interface épurée.',
+    techs: ['TypeScript', 'Angular', 'TailwindCSS', 'Vercel'],
+    highlights: ['Menu interactif', 'Réservation en direct', 'Design responsive'],
+    icon: 'fa-solid fa-burger',
+    demoUrl: 'https://le-calao-dore-pi.vercel.app',
+    githubUrl: 'https://github.com/MrAbkr19/le-calao-dore',
+    image: 'images/calao.png',
+    gradient: 'from-amber-500/20 via-orange-600/10 to-transparent',
+    color: '#f59e0b'
+  }
+
+
+];

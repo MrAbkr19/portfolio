@@ -1,1 +1,24 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import url('./assets/css/chillax.css');
+
+@import "tailwindcss";
+
+body{
+    font-family: montserrat;
+    color: white;
+}
+:root{
+    --font-title:"montserrat";
+    --font-subtitle:"poppins";
+    --bg-2: #131313;
+}
+.title{
+    
+    font-family: var(--font-title);
+    font-weight: lighter;
+    font-size: 4em;
+    color: transparent;
+    font-family: var(--font-subtitle);
+  -webkit-text-stroke: 1px white;
+}

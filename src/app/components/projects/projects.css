@@ -1,0 +1,89 @@
+/* Styles du composant Projets (Carrousel de cartes empilées 3D) */
+
+/* Conteneur 3D avec perspective */
+.deck-container {
+  perspective: 1200px;
+  transform-style: preserve-3d;
+  touch-action: pan-y; /* Permet le défilement vertical tout en capturant le glissement horizontal */
+}
+
+/* Styles communs des cartes de projet */
+.carte-projet {
+  transition: transform 0.55s cubic-bezier(0.2, 0.8, 0.2, 1),
+              opacity 0.55s ease,
+              box-shadow 0.55s ease;
+  will-change: transform, opacity;
+  user-select: none;
+  -webkit-user-select: none;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+/* Position 0 : Carte active au premier plan (DEVANT) */
+.carte-projet[data-offset="0"] {
+  z-index: 30;
+  transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
+  opacity: 1;
+  pointer-events: auto;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.85),
+              0 0 35px rgba(249, 115, 22, 0.15);
+}
+
+/* Position 1 : Première carte empilée juste derrière */
+.carte-projet[data-offset="1"] {
+  z-index: 20;
+  transform: translate3d(32px, 8px, -40px) scale(0.92) rotate(3deg);
+  opacity: 0.72;
+  pointer-events: auto;
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.75);
+}
+
+.carte-projet[data-offset="1"]:hover {
+  opacity: 0.9;
+  transform: translate3d(38px, 4px, -30px) scale(0.94) rotate(2deg);
+}
+
+/* Position 2 : Deuxième carte empilée plus au fond */
+.carte-projet[data-offset="2"] {
+  z-index: 10;
+  transform: translate3d(62px, 16px, -80px) scale(0.85) rotate(6deg);
+  opacity: 0.42;
+  pointer-events: auto;
+  box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.65);
+}
+
+.carte-projet[data-offset="2"]:hover {
+  opacity: 0.65;
+  transform: translate3d(68px, 10px, -70px) scale(0.87) rotate(5deg);
+}
+
+/* Autres positions arrières masquées */
+.carte-projet:not([data-offset="0"]):not([data-offset="1"]):not([data-offset="2"]) {
+  z-index: 0;
+  transform: translate3d(85px, 24px, -120px) scale(0.78) rotate(8deg);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Effets visuels sur le cadre de logo de la carte */
+.cadre-visuel-carte {
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12),
+              0 10px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* Animation douce pour les pilules de sélection gauche */
+.pilule-projet {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* Adaptations sur petits écrans (mobiles) */
+@media (max-width: 640px) {
+  .carte-projet[data-offset="1"] {
+    transform: translate3d(16px, 8px, -30px) scale(0.93) rotate(2deg);
+  }
+
+  .carte-projet[data-offset="2"] {
+    transform: translate3d(30px, 16px, -60px) scale(0.86) rotate(4deg);
+  }
+}

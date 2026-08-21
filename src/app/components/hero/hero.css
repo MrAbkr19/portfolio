@@ -1,0 +1,23 @@
+#hero{
+    display: flex;
+    height: 75vh;
+    justify-content: space-around;
+    /* background-color: antiquewhite; */
+}
+.picture{
+    
+    height: 100%;
+    /* background-color: aqua; */
+
+}
+
+.picture img{
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
+.presentation{
+    height: 70%;
+    /* width: 30vw; */
+    
+}

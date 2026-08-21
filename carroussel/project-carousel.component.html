@@ -1,0 +1,95 @@
+<section
+  class="carousel"
+  role="region"
+  aria-roledescription="carrousel"
+  aria-label="Mes projets"
+>
+  <div
+    class="carousel__viewport"
+    (touchstart)="onTouchStart($event)"
+    (touchend)="onTouchEnd($event)"
+  >
+    <div
+      #track
+      class="carousel__track"
+      [style.transform]="'translateX(-' + (activeIndex() * 100) + '%)'"
+    >
+      <article
+        class="project-card"
+        *ngFor="let project of projects; let i = index; trackBy: trackByProjectId"
+        [attr.aria-hidden]="i !== activeIndex()"
+      >
+        <div class="project-card__media">
+          <img
+            [src]="project.image"
+            [alt]="'Aperçu du projet ' + project.title"
+            loading="lazy"
+          />
+        </div>
+
+        <div class="project-card__body">
+          <h3 class="project-card__title">{{ project.title }}</h3>
+          <p class="project-card__description">{{ project.description }}</p>
+
+          <ul class="project-card__technos" *ngIf="project.technos?.length">
+            <li *ngFor="let techno of project.technos">{{ techno }}</li>
+          </ul>
+
+          <div class="project-card__links">
+            <a
+              *ngIf="project.demoUrl"
+              class="btn btn--primary"
+              [href]="project.demoUrl"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Voir la démo
+            </a>
+            <a
+              *ngIf="project.githubUrl"
+              class="btn btn--ghost"
+              [href]="project.githubUrl"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Code source
+            </a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <div class="carousel__controls" *ngIf="total() > 1">
+    <button
+      type="button"
+      class="carousel__arrow carousel__arrow--prev"
+      (click)="prev()"
+      aria-label="Projet précédent"
+    >
+      &#8592;
+    </button>
+
+    <div class="carousel__dots" role="tablist" aria-label="Sélection du projet">
+      <button
+        *ngFor="let project of projects; let i = index"
+        type="button"
+        class="carousel__dot"
+        [class.carousel__dot--active]="i === activeIndex()"
+        role="tab"
+        [attr.aria-selected]="i === activeIndex()"
+        [attr.aria-label]="'Aller au projet ' + project.title"
+        (click)="goTo(i)"
+      ></button>
+    </div>
+
+    <button
+      type="button"
+      class="carousel__arrow carousel__arrow--next"
+      (click)="next()"
+      aria-label="Projet suivant"
+    >
+      &#8594;
+    </button>
+  </div>
+</section>
