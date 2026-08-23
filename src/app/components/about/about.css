@@ -4,7 +4,7 @@
 .title{
     font-family: var(--font-title);
     font-weight: lighter;
-    font-size: 4em;
+    /* font-size: 4em; */
     color: transparent;
     font-family: var(--font-subtitle);
   -webkit-text-stroke: 1px white;

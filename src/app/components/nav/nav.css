@@ -1,8 +1,7 @@
 #navbar{
     display: flex;
-    justify-content: center ;
+    justify-content: space-between ;
     align-items: center;
-    gap: 80px;
     padding: 20px;
     font-family: montserrat;
     color: wheat;
@@ -10,7 +9,6 @@
     /* background-color: blue; */
 }
 ul{
-    display: flex;
     gap:10px
 }
 .logo{

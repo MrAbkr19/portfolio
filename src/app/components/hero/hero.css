@@ -1,6 +1,6 @@
 #hero{
     display: flex;
-    height: 75vh;
+    /* height: 75vh; */
     justify-content: space-around;
     /* background-color: antiquewhite; */
 }

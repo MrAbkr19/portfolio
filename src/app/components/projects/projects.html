@@ -7,7 +7,7 @@
   <!-- Grand titre de la section -->
   <div class="con-title mb-10">
     <div class="flex items-center justify-between">
-      <h1 class="title">Mes Projets</h1>
+      <h1 class="title text-4xl lg:text-[4em]">Mes Projets</h1>
     </div>
     <div class="w-[100%] border border-orange-500 mt-2"></div>
     <p class="text-neutral-400 text-sm mt-3 flex items-center gap-2">
@@ -16,12 +16,12 @@
   </div>
 
   <!-- Cadre principal du carrousel avec disposition en 2 colonnes -->
-  <div class="w-full bg-neutral-950/70 backdrop-blur-2xl border border-white/12 rounded-3xl p-6 md:p-10 shadow-2xl relative">
+  <div class="w-full bg-[var(--bg-2)] backdrop-blur-2xl border border-white/12 rounded-3xl p-6 md:p-10 shadow-2xl relative">
     
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
       
       <!-- Colonne Gauche : Liste des pilules de sélection des projets -->
-      <div class="lg:col-span-5 flex flex-col gap-3 z-10">
+      <div class="lg:col-span-5  flex-col gap-3 z-10 hidden lg:flex">
         
         <div class="text-xs uppercase tracking-wider text-neutral-400 font-semibold mb-1 flex items-center justify-between">
           <span>Sélection rapide</span>
@@ -63,7 +63,7 @@
         
         <!-- Scène du deck de cartes 3D avec événements de glissement manuel (souris & tactile) -->
         <div
-          class="deck-container relative w-full max-w-md h-[460px] md:h-[480px] flex items-center justify-center select-none"
+          class="deck-container relative w-full max-w-md h-[400px] md:h-[420px] flex items-center justify-center select-none"
           (mouseenter)="pauseAutoPlay()"
           (mouseleave)="onMouseLeave()"
           (mousedown)="onMouseDown($event)"
@@ -77,7 +77,7 @@
           @for (project of allProjects; track project.id; let i = $index) {
             @if (isCardVisible(i)) {
               <div
-                class="carte-projet absolute w-full max-w-[340px] sm:max-w-[380px] bg-neutral-900/95 border border-white/15 rounded-3xl p-6 shadow-2xl flex flex-col justify-between cursor-pointer"
+                class="carte-projet absolute w-full max-w-[340px] sm:max-w-[400px] bg-neutral-900/95 border border-white/15 rounded-3xl p-6 shadow-2xl flex flex-col justify-between cursor-pointer"
                 [attr.data-offset]="getCardOffset(i)"
                 (click)="goToSlide(i)"
                 [style.transform]="getCardOffset(i) === 0 && isDragging ? 'translateX(' + dragOffset + 'px) rotate(' + (dragOffset * 0.05) + 'deg)' : null"
@@ -93,10 +93,7 @@
                   />
 
                   <!-- Halo lumineux subtil avec la couleur du projet -->
-                  <div
-                    class="absolute inset-0 opacity-20 pointer-events-none transition-opacity duration-300"
-                    [style.background]="'radial-gradient(circle at center, ' + (project.color || '#f97316') + ' 0%, transparent 80%)'"
-                  ></div>
+                  
 
                   <!-- Dégradé inférieur pour fondre l'image dans la carte -->
                   <div class="absolute inset-0 bg-gradient-to-t from-neutral-900/60 via-transparent to-transparent pointer-events-none"></div>
@@ -130,7 +127,7 @@
                   </div>
 
                   <!-- Boutons d'action sur la carte principale active -->
-                  <div class="flex items-center gap-3 pt-3 border-t border-white/10 mt-1">
+                  <div class="flex items-center gap-3 pt-3 border-t border-white/10 mt-5">
                     <a
                       [href]="project.demoUrl"
                       target="_blank"
@@ -161,7 +158,7 @@
         </div>
 
         <!-- Contrôles manuels : Flèches précédent/suivant + Indicateurs -->
-        <div class="flex items-center justify-center gap-4 mt-6 w-full">
+        <div class="flex items-center justify-center gap-4 mt-6 w-full mt-10">
           
           <!-- Bouton précédent -->
           <button

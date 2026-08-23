@@ -1,1 +1,58 @@
-<p>contact works!</p>
+<section id="contact" class=" bg-[var(--bg-2)] min-h-screen py-12 px-4 flex items-center justify-center">
+  <div class="   border-orange-500/30 shadow-lg shadow-orange-500/10 backdrop-blur-xl group hover:border-orange-500/70 transition-all duration-300 rounded-2xl shadow-xl p-8 md:p-12 max-w-5xl w-full">
+    
+    <!-- En-tête -->
+    <div class="text-center mb-20 title">
+      <h6 class="text-2xl sm:text-3xl lg:text-4xl ">Une question ? un Projet ?</h6>
+      <h3 class="text-4xl sm:text-7xl lg:text-8xl font-bold">Parlons-en!</h3>
+    </div>
+
+    <!-- Formulaire -->
+    <form action="#" method="post" class="space-y-8">
+      
+      <!-- Grille des champs principaux -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <input 
+          type="text" 
+          name="name" 
+          placeholder=" votre nom" 
+          required 
+          class="w-full bg-transparent border-b-2 border-gray-200 py-2 px-1 text-white placeholder-gray-400 focus:outline-none focus:border-orange-500 transition-colors"
+        >
+        
+        <input 
+          type="email" 
+          name="email" 
+          placeholder=" votre email" 
+          required 
+          class="w-full bg-transparent border-b-2 border-gray-200 py-2 px-1 text-white placeholder-gray-400 focus:outline-none focus:border-orange-500 transition-colors"
+        >
+        
+        
+        
+        
+      </div>
+
+      <!-- Zone de message sur toute la largeur -->
+      <div class="pt-4">
+        <textarea 
+          name="message" 
+          placeholder=" votre message" 
+          rows="3" 
+          class="w-full bg-transparent border-b-2 border-gray-200 py-2 px-1 text-white placeholder-gray-400 focus:outline-none focus:border-orange-500 transition-colors resize-none"
+        ></textarea>
+      </div>
+
+      <!-- Bouton d'envoi -->
+      <div class="text-center pt-6">
+        <button 
+          type="submit" 
+          class="bg-orange-500 hover:bg-orange-600 text-white font-medium py-3 px-12 rounded-lg transition-colors shadow-md"
+        >
+          Envoyer
+        </button>
+      </div>
+
+    </form>
+  </div>
+</section>

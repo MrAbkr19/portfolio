@@ -2,6 +2,6 @@ header{
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: black;
+    /* background-color: black; */
     padding: 20px;
 }

@@ -1,16 +1,26 @@
-<div id="navbar" class="bg-white/7 backdrop-blur-lg border border-white/12  rounded-4xl shadow-lg px-6">
-    <div class="logo">Mr Abkr <span class="text-orange-500">.</span></div>
-    <div class="navbar">
-        <ul>
+<section id="nav" class=" flex flex-col items-center gap-5 " >
+    <div id="navbar" class="bg-white/7 backdrop-blur-lg border border-white/12 w-[90vw] lg:w-[80vw] rounded-4xl max-w-[900px] shadow-lg px-6 sticky top-0 z-50">
+        <div class="logo">Mr Abkr <span class="text-orange-500">.</span></div>
+        <div class="navbar ">
+            <ul class=" hidden lg:flex">
 
-            <li> <a href="#hero">Acceuil</a></li>
-            <li> <a href="#skills">Competences</a></li>
-            <li> <a href="#projects">Projets</a></li>
-            <li> <a href="#about">A propos</a></li>
-            <li> <a href="#contact" class="text-white font-bold ">Contact</a></li>
+                <li> <a href="#hero">Acceuil</a></li>
+                <li> <a href="#skills">Competences</a></li>
+                <li> <a href="#projects">Projets</a></li>
+                <li> <a href="#about">A propos</a></li>
+                <li> <a href="#contact" class="text-white font-bold ">Contact</a></li>
 
-        </ul>
+            </ul>
+            <div class="text-white lg:hidden">
+                <i class=" fa-solid fa-bars   "></i>
+            </div>
+            
+        </div>
+            <button class="bg-orange-500 hidden lg:block rounded-4xl shadow-lg py-1 px-4 font-bold text-white">mon CV <i class="fa-solid fa-download text-white" ></i></button>
+
     </div>
-    <button class="bg-orange-500  rounded-4xl shadow-lg py-1 px-4 font-bold text-white">Télécharger CV</button>
-</div>
+    <button class="bg-orange-500  lg:hidden rounded-4xl shadow-lg py-2 px-6 font-bold text-white">mon CV <i class="fa-solid fa-download text-white" ></i></button>
 
+
+
+</section>
