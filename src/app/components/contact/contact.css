@@ -1,3 +1,7 @@
 .f{
     color: #180800;
 }
+.hp { 
+  position: absolute; 
+  left: -5000px;   /* hors écran : les humains ne le voient jamais */ 
+} 

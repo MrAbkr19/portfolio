@@ -8,13 +8,13 @@
     </div>
 
     <!-- Formulaire -->
-    <form action="#" method="post" class="space-y-8">
+    <form [formGroup]="form" (ngSubmit)="submit()" action="#" method="post" class="space-y-8">
       
       <!-- Grille des champs principaux -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
         <input 
           type="text" 
-          name="name" 
+          formControlName="name"
           placeholder=" votre nom" 
           required 
           class="w-full bg-transparent border-b-2 border-gray-200 py-2 px-1 text-white placeholder-gray-400 focus:outline-none focus:border-orange-500 transition-colors"
@@ -22,7 +22,7 @@
         
         <input 
           type="email" 
-          name="email" 
+          formControlName="email" 
           placeholder=" votre email" 
           required 
           class="w-full bg-transparent border-b-2 border-gray-200 py-2 px-1 text-white placeholder-gray-400 focus:outline-none focus:border-orange-500 transition-colors"
@@ -36,7 +36,7 @@
       <!-- Zone de message sur toute la largeur -->
       <div class="pt-4">
         <textarea 
-          name="message" 
+          formControlName="email" 
           placeholder=" votre message" 
           rows="3" 
           class="w-full bg-transparent border-b-2 border-gray-200 py-2 px-1 text-white placeholder-gray-400 focus:outline-none focus:border-orange-500 transition-colors resize-none"
@@ -46,12 +46,15 @@
       <!-- Bouton d'envoi -->
       <div class="text-center pt-6">
         <button 
+        [disabled]="status() === 'sending'"
           type="submit" 
           class="bg-orange-500 hover:bg-orange-600 text-white font-medium py-3 px-12 rounded-lg transition-colors shadow-md"
         >
-          Envoyer
+          {{ status() === 'sending' ? 'Envoi…' : 'Envoyer' }} 
         </button>
       </div>
+      @if (status() === 'ok') { <p class="text-green">Message envoyé, merci !</p> } 
+    @if (status() === 'error') { <p class="text-red">Une erreur est survenue.</p> } 
 
     </form>
   </div>
