@@ -45,3 +45,5 @@ Thumbs.db
 
 #environments files 
 .env.local
+.vercel
+.env*
