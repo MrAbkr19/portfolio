@@ -2,7 +2,7 @@
   "framework": "angular",
   "devCommand": "ng serve --port $PORT",
   "buildCommand": "npm run build",
-  "outputDirectory": "dist/portfolio",
+  "outputDirectory": "dist/portfolio/browser",
   "rewrites": [
     {
       "source": "/api/(.*)",
