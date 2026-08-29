@@ -1,197 +1,199 @@
-<section id="projects" class="pl-6 pr-6 md:pl-16 md:pr-16 lg:pl-20 lg:pr-20 pt-16 pb-20 min-h-screen flex flex-col justify-center relative overflow-hidden">
-  
-  <!-- Lueur d'ambiance en arrière-plan -->
-  <div class="absolute top-1/3 left-1/4 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-orange-500/10 rounded-full blur-3xl pointer-events-none -z-10"></div>
-  <div class="absolute bottom-10 right-10 w-80 h-80 bg-amber-500/5 rounded-full blur-3xl pointer-events-none -z-10"></div>
+<section id="projects" class="pl-6 pr-6 md:pl-16 md:pr-16 lg:pl-20 lg:pr-20 pt-16 pb-20 min-h-screen flex flex-col justify-center relative overflow-hidden max-w-8xl mx-auto">
+  <div class="">
+        <!-- Lueur d'ambiance en arrière-plan -->
+    <div class="absolute top-1/3 left-1/4 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-orange-500/10 rounded-full blur-3xl pointer-events-none -z-10"></div>
+    <div class="absolute bottom-10 right-10 w-80 h-80 bg-amber-500/5 rounded-full blur-3xl pointer-events-none -z-10"></div>
 
-  <!-- Grand titre de la section -->
-  <div class="con-title mb-10">
-    <div class="flex items-center justify-between">
-      <h1 class="title text-4xl lg:text-[4em]">Mes Projets</h1>
-    </div>
-    <div class="w-[100%] border border-orange-500 mt-2"></div>
-    <p class="text-neutral-400 text-sm mt-3 flex items-center gap-2">
-      Là où les idées deviennent réelles
-    </p>
-  </div>
-
-  <!-- Cadre principal du carrousel avec disposition en 2 colonnes -->
-  <div class="w-full bg-[var(--bg-2)] backdrop-blur-2xl border border-white/12 rounded-3xl p-6 md:p-10 shadow-2xl relative">
-    
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-      
-      <!-- Colonne Gauche : Liste des pilules de sélection des projets -->
-      <div class="lg:col-span-5  flex-col gap-3 z-10 hidden lg:flex">
-        
-        <div class="text-xs uppercase tracking-wider text-neutral-400 font-semibold mb-1 flex items-center justify-between">
-          <span>Sélection rapide</span>
-        </div>
-
-        <!-- Liste des boutons pilules de chaque projet -->
-        @for (project of allProjects; track project.id; let i = $index) {
-          <button
-            type="button"
-            (click)="goToSlide(i)"
-            [class.pilule-active]="i === currentIndex"
-            class="pilule-projet flex items-center gap-3.5 px-4 py-3 rounded-2xl text-left transition-all duration-300 cursor-pointer border group"
-            [ngClass]="i === currentIndex 
-              ? 'bg-gradient-to-r from-orange-500 to-amber-500 text-white font-semibold shadow-lg shadow-orange-500/25 border-orange-400 scale-[1.02]' 
-              : 'bg-white/[0.04] hover:bg-white/[0.08] text-neutral-300 hover:text-white border-white/10 hover:border-white/20'"
-          >
-            <!-- Miniature aperçu dans la pilule -->
-            <div class="w-9 h-9 rounded-xl overflow-hidden flex items-center justify-center bg-black/40 border border-white/10 shrink-0 shadow-sm">
-              <img [src]="project.image" [alt]="project.title" class="w-full h-full object-cover">
-            </div>
-
-            <!-- Titre et sous-titre du projet dans la pilule -->
-            <div class="flex flex-col flex-1 min-w-0">
-              <span class="text-sm font-medium truncate">{{ project.title }}</span>
-              <span class="text-[11px] truncate opacity-75">{{ project.category }}</span>
-            </div>
-
-            <!-- Flèche active -->
-            @if (i === currentIndex) {
-              <i class="fa-solid fa-chevron-right text-xs text-white animate-pulse"></i>
-            }
-          </button>
-        }
-
+    <!-- Grand titre de la section -->
+    <div class="con-title mb-10">
+      <div class="flex items-center justify-between">
+        <h1 class="title text-4xl lg:text-[4em]">Mes Projets</h1>
       </div>
+      <div class="w-[100%] border border-orange-500 mt-2"></div>
+      <p class="text-neutral-400 text-sm mt-3 flex items-center gap-2">
+        Là où les idées deviennent réelles
+      </p>
+    </div>
 
-      <!-- Colonne Droite : Pile 3D des cartes qui défilent et passent devant les unes après les autres -->
-      <div class="lg:col-span-7 flex flex-col items-center justify-center">
+    <!-- Cadre principal du carrousel avec disposition en 2 colonnes -->
+    <div class="w-full bg-[var(--bg-2)] backdrop-blur-2xl border border-white/12 rounded-3xl p-6 md:p-10 shadow-2xl relative">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
         
-        <!-- Scène du deck de cartes 3D avec événements de glissement manuel (souris & tactile) -->
-        <div
-          class="deck-container relative w-full max-w-md h-[400px] md:h-[420px] flex items-center justify-center select-none"
-          (mouseenter)="pauseAutoPlay()"
-          (mouseleave)="onMouseLeave()"
-          (mousedown)="onMouseDown($event)"
-          (mousemove)="onMouseMove($event)"
-          (mouseup)="onMouseUp()"
-          (touchstart)="onTouchStart($event)"
-          (touchmove)="onTouchMove($event)"
-          (touchend)="onTouchEnd()"
-        >
-          <!-- Empilement des cartes -->
+        <!-- Colonne Gauche : Liste des pilules de sélection des projets -->
+        <div class="lg:col-span-5  flex-col gap-3 z-10 hidden lg:flex">
+          
+          <div class="text-xs uppercase tracking-wider text-neutral-400 font-semibold mb-1 flex items-center justify-between">
+            <span>Sélection rapide</span>
+          </div>
+
+          <!-- Liste des boutons pilules de chaque projet -->
           @for (project of allProjects; track project.id; let i = $index) {
-            @if (isCardVisible(i)) {
-              <div
-                class="carte-projet absolute w-full max-w-[340px] sm:max-w-[400px] bg-neutral-900/95 border border-white/15 rounded-3xl p-6 shadow-2xl flex flex-col justify-between cursor-pointer"
-                [attr.data-offset]="getCardOffset(i)"
-                (click)="goToSlide(i)"
-                [style.transform]="getCardOffset(i) === 0 && isDragging ? 'translateX(' + dragOffset + 'px) rotate(' + (dragOffset * 0.05) + 'deg)' : null"
-              >
-                <!-- Zone supérieure : Illustration / Aperçu du projet -->
-                <div class="cadre-visuel-carte w-full h-44 rounded-2xl bg-neutral-950 border border-white/10 flex items-center justify-center relative overflow-hidden mb-4 group">
-                  
-                  <!-- Image d'aperçu du projet -->
-                  <img
-                    [src]="project.image"
-                    [alt]="project.title"
-                    class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
-                  />
-
-                  <!-- Halo lumineux subtil avec la couleur du projet -->
-                  
-
-                  <!-- Dégradé inférieur pour fondre l'image dans la carte -->
-                  <div class="absolute inset-0 bg-gradient-to-t from-neutral-900/60 via-transparent to-transparent pointer-events-none"></div>
-
-                  <!-- Badge discret de numéro en haut à droite -->
-                  <span class="absolute top-3 right-3 text-[10px] font-poppins px-2 py-0.5 rounded-full bg-neutral-950/80 border border-white/10 text-neutral-300 backdrop-blur-md z-10 shadow">
-                    0{{ i + 1 }} / 0{{ allProjects.length }}
-                  </span>
-                </div>
-
-                <!-- Zone inférieure : Informations du projet -->
-                <div class="flex flex-col gap-2.5">
-                  
-                  <!-- Titre principal -->
-                  <h3 class="text-xl font-bold text-white tracking-tight leading-tight">
-                    {{ project.title }}
-                  </h3>
-
-                  <!-- Description concise -->
-                  <p class="text-xs sm:text-sm text-neutral-300 leading-relaxed line-clamp-2">
-                    {{ project.description }}
-                  </p>
-
-                  <!-- Tags des technologies -->
-                  <div class="flex flex-wrap gap-1.5 pt-1">
-                    @for (tech of project.techs; track tech) {
-                      <span class="text-[10px] font-medium px-2 py-0.5 rounded-md bg-white/5 border border-white/10 text-neutral-300">
-                        {{ tech }}
-                      </span>
-                    }
-                  </div>
-
-                  <!-- Boutons d'action sur la carte principale active -->
-                  <div class="flex items-center gap-3 pt-3 border-t border-white/10 mt-5">
-                    <a
-                      [href]="project.demoUrl"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      (click)="$event.stopPropagation()"
-                      class="flex-1 inline-flex items-center justify-center gap-2 py-2 px-4 rounded-xl bg-orange-500 hover:bg-orange-600 text-white text-xs font-semibold shadow-md shadow-orange-500/25 transition-all duration-200 hover:scale-105 active:scale-95"
-                    >
-                      <span>Voir démo</span>
-                      <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
-                    </a>
-
-                    <a
-                      [href]="project.githubUrl"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      (click)="$event.stopPropagation()"
-                      class="inline-flex items-center justify-center gap-1.5 py-2 px-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/15 text-neutral-200 hover:text-white text-xs font-medium transition-all duration-200 hover:scale-105 active:scale-95"
-                    >
-                      <i class="fa-brands fa-github text-sm"></i>
-                      <span>Code</span>
-                    </a>
-                  </div>
-
-                </div>
+            <button
+              type="button"
+              (click)="goToSlide(i)"
+              [class.pilule-active]="i === currentIndex"
+              class="pilule-projet flex items-center gap-3.5 px-4 py-3 rounded-2xl text-left transition-all duration-300 cursor-pointer border group"
+              [ngClass]="i === currentIndex 
+                ? 'bg-gradient-to-r from-orange-500 to-amber-500 text-white font-semibold shadow-lg shadow-orange-500/25 border-orange-400 scale-[1.02]' 
+                : 'bg-white/[0.04] hover:bg-white/[0.08] text-neutral-300 hover:text-white border-white/10 hover:border-white/20'"
+            >
+              <!-- Miniature aperçu dans la pilule -->
+              <div class="w-9 h-9 rounded-xl overflow-hidden flex items-center justify-center bg-black/40 border border-white/10 shrink-0 shadow-sm">
+                <img [src]="project.image" [alt]="project.title" class="w-full h-full object-cover">
               </div>
-            }
+
+              <!-- Titre et sous-titre du projet dans la pilule -->
+              <div class="flex flex-col flex-1 min-w-0">
+                <span class="text-sm font-medium truncate">{{ project.title }}</span>
+                <span class="text-[11px] truncate opacity-75">{{ project.category }}</span>
+              </div>
+
+              <!-- Flèche active -->
+              @if (i === currentIndex) {
+                <i class="fa-solid fa-chevron-right text-xs text-white animate-pulse"></i>
+              }
+            </button>
           }
+
         </div>
 
-        <!-- Contrôles manuels : Flèches précédent/suivant + Indicateurs -->
-        <div class="flex items-center justify-center gap-4 mt-6 w-full mt-10">
+        <!-- Colonne Droite : Pile 3D des cartes qui défilent et passent devant les unes après les autres -->
+        <div class="lg:col-span-7 flex flex-col items-center justify-center">
           
-          <!-- Bouton précédent -->
-          <button
-            type="button"
-            (click)="prevSlide()"
-            aria-label="Carte précédente"
-            class="w-10 h-10 rounded-full bg-white/5 hover:bg-orange-500/20 border border-white/15 hover:border-orange-500/50 flex items-center justify-center text-white hover:text-orange-400 transition-all duration-200 hover:scale-110 active:scale-95 cursor-pointer shadow-lg"
+          <!-- Scène du deck de cartes 3D avec événements de glissement manuel (souris & tactile) -->
+          <div
+            class="deck-container relative w-full max-w-md h-[400px] md:h-[420px] flex items-center justify-center select-none"
+            (mouseenter)="pauseAutoPlay()"
+            (mouseleave)="onMouseLeave()"
+            (mousedown)="onMouseDown($event)"
+            (mousemove)="onMouseMove($event)"
+            (mouseup)="onMouseUp()"
+            (touchstart)="onTouchStart($event)"
+            (touchmove)="onTouchMove($event)"
+            (touchend)="onTouchEnd()"
           >
-            <i class="fa-solid fa-chevron-left text-xs"></i>
-          </button>
-
-          <!-- Indicateurs de position (barres dynamiques) -->
-          <div class="flex items-center gap-1.5">
+            <!-- Empilement des cartes -->
             @for (project of allProjects; track project.id; let i = $index) {
-              <button
-                type="button"
-                (click)="goToSlide(i)"
-                [attr.aria-label]="'Afficher le projet ' + (i + 1)"
-                class="h-2 rounded-full transition-all duration-300 cursor-pointer"
-                [ngClass]="i === currentIndex ? 'w-7 bg-orange-500 shadow-md shadow-orange-500/50' : 'w-2 bg-white/20 hover:bg-white/40'"
-              ></button>
+              @if (isCardVisible(i)) {
+                <div
+                  class="carte-projet absolute w-full max-w-[340px] sm:max-w-[400px] bg-neutral-900/95 border border-white/15 rounded-3xl p-6 shadow-2xl flex flex-col justify-between cursor-pointer"
+                  [attr.data-offset]="getCardOffset(i)"
+                  (click)="goToSlide(i)"
+                  [style.transform]="getCardOffset(i) === 0 && isDragging ? 'translateX(' + dragOffset + 'px) rotate(' + (dragOffset * 0.05) + 'deg)' : null"
+                >
+                  <!-- Zone supérieure : Illustration / Aperçu du projet -->
+                  <div class="cadre-visuel-carte w-full h-44 rounded-2xl bg-neutral-950 border border-white/10 flex items-center justify-center relative overflow-hidden mb-4 group">
+                    
+                    <!-- Image d'aperçu du projet -->
+                    <img
+                      [src]="project.image"
+                      [alt]="project.title"
+                      class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                    />
+
+                    <!-- Halo lumineux subtil avec la couleur du projet -->
+                    
+
+                    <!-- Dégradé inférieur pour fondre l'image dans la carte -->
+                    <div class="absolute inset-0 bg-gradient-to-t from-neutral-900/60 via-transparent to-transparent pointer-events-none"></div>
+
+                    <!-- Badge discret de numéro en haut à droite -->
+                    <span class="absolute top-3 right-3 text-[10px] font-poppins px-2 py-0.5 rounded-full bg-neutral-950/80 border border-white/10 text-neutral-300 backdrop-blur-md z-10 shadow">
+                      0{{ i + 1 }} / 0{{ allProjects.length }}
+                    </span>
+                  </div>
+
+                  <!-- Zone inférieure : Informations du projet -->
+                  <div class="flex flex-col gap-2.5">
+                    
+                    <!-- Titre principal -->
+                    <h3 class="text-xl font-bold text-white tracking-tight leading-tight">
+                      {{ project.title }}
+                    </h3>
+
+                    <!-- Description concise -->
+                    <p class="text-xs sm:text-sm text-neutral-300 leading-relaxed line-clamp-2">
+                      {{ project.description }}
+                    </p>
+
+                    <!-- Tags des technologies -->
+                    <div class="flex flex-wrap gap-1.5 pt-1">
+                      @for (tech of project.techs; track tech) {
+                        <span class="text-[10px] font-medium px-2 py-0.5 rounded-md bg-white/5 border border-white/10 text-neutral-300">
+                          {{ tech }}
+                        </span>
+                      }
+                    </div>
+
+                    <!-- Boutons d'action sur la carte principale active -->
+                    <div class="flex items-center gap-3 pt-3 border-t border-white/10 mt-5">
+                      <a
+                        [href]="project.demoUrl"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        (click)="$event.stopPropagation()"
+                        class="flex-1 inline-flex items-center justify-center gap-2 py-2 px-4 rounded-xl bg-orange-500 hover:bg-orange-600 text-white text-xs font-semibold shadow-md shadow-orange-500/25 transition-all duration-200 hover:scale-105 active:scale-95"
+                      >
+                        <span>Voir démo</span>
+                        <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                      </a>
+
+                      <a
+                        [href]="project.githubUrl"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        (click)="$event.stopPropagation()"
+                        class="inline-flex items-center justify-center gap-1.5 py-2 px-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/15 text-neutral-200 hover:text-white text-xs font-medium transition-all duration-200 hover:scale-105 active:scale-95"
+                      >
+                        <i class="fa-brands fa-github text-sm"></i>
+                        <span>Code</span>
+                      </a>
+                    </div>
+
+                  </div>
+                </div>
+              }
             }
           </div>
 
-          <!-- Bouton suivant -->
-          <button
-            type="button"
-            (click)="nextSlide()"
-            aria-label="Carte suivante"
-            class="w-10 h-10 rounded-full bg-white/5 hover:bg-orange-500/20 border border-white/15 hover:border-orange-500/50 flex items-center justify-center text-white hover:text-orange-400 transition-all duration-200 hover:scale-110 active:scale-95 cursor-pointer shadow-lg"
-          >
-            <i class="fa-solid fa-chevron-right text-xs"></i>
-          </button>
+          <!-- Contrôles manuels : Flèches précédent/suivant + Indicateurs -->
+          <div class="flex items-center justify-center gap-4 mt-6 w-full mt-10">
+            
+            <!-- Bouton précédent -->
+            <button
+              type="button"
+              (click)="prevSlide()"
+              aria-label="Carte précédente"
+              class="w-10 h-10 rounded-full bg-white/5 hover:bg-orange-500/20 border border-white/15 hover:border-orange-500/50 flex items-center justify-center text-white hover:text-orange-400 transition-all duration-200 hover:scale-110 active:scale-95 cursor-pointer shadow-lg"
+            >
+              <i class="fa-solid fa-chevron-left text-xs"></i>
+            </button>
+
+            <!-- Indicateurs de position (barres dynamiques) -->
+            <div class="flex items-center gap-1.5">
+              @for (project of allProjects; track project.id; let i = $index) {
+                <button
+                  type="button"
+                  (click)="goToSlide(i)"
+                  [attr.aria-label]="'Afficher le projet ' + (i + 1)"
+                  class="h-2 rounded-full transition-all duration-300 cursor-pointer"
+                  [ngClass]="i === currentIndex ? 'w-7 bg-orange-500 shadow-md shadow-orange-500/50' : 'w-2 bg-white/20 hover:bg-white/40'"
+                ></button>
+              }
+            </div>
+
+            <!-- Bouton suivant -->
+            <button
+              type="button"
+              (click)="nextSlide()"
+              aria-label="Carte suivante"
+              class="w-10 h-10 rounded-full bg-white/5 hover:bg-orange-500/20 border border-white/15 hover:border-orange-500/50 flex items-center justify-center text-white hover:text-orange-400 transition-all duration-200 hover:scale-110 active:scale-95 cursor-pointer shadow-lg"
+            >
+              <i class="fa-solid fa-chevron-right text-xs"></i>
+            </button>
+
+          </div>
 
         </div>
 

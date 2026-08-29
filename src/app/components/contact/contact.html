@@ -8,7 +8,7 @@
     </div>
 
     <!-- Formulaire -->
-    <form [formGroup]="form" (ngSubmit)="submit()" action="#" method="post" class="space-y-8">
+    <form [formGroup]="form" (ngSubmit)="submit()" class="space-y-8">
       
       <!-- Grille des champs principaux -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -27,34 +27,38 @@
           required 
           class="w-full bg-transparent border-b-2 border-gray-200 py-2 px-1 text-white placeholder-gray-400 focus:outline-none focus:border-orange-500 transition-colors"
         >
-        
-        
-        
-        
       </div>
 
       <!-- Zone de message sur toute la largeur -->
       <div class="pt-4">
         <textarea 
-          formControlName="email" 
+          formControlName="message" 
           placeholder=" votre message" 
           rows="3" 
           class="w-full bg-transparent border-b-2 border-gray-200 py-2 px-1 text-white placeholder-gray-400 focus:outline-none focus:border-orange-500 transition-colors resize-none"
         ></textarea>
       </div>
 
+      <!-- Piège anti-robot : invisible pour un humain (voir CSS .hp) -->
+      <input formControlName="website" class="hp" tabindex="-1" autocomplete="off" />
+
       <!-- Bouton d'envoi -->
       <div class="text-center pt-6">
         <button 
-        [disabled]="status() === 'sending'"
-          type="submit" 
-          class="bg-orange-500 hover:bg-orange-600 text-white font-medium py-3 px-12 rounded-lg transition-colors shadow-md"
+          type="submit"
+          [disabled]="status() === 'sending'"
+          class="bg-orange-500 hover:bg-orange-600 disabled:opacity-50 disabled:cursor-not-allowed text-white font-medium py-3 px-12 rounded-lg transition-colors shadow-md cursor-pointer"
         >
           {{ status() === 'sending' ? 'Envoi…' : 'Envoyer' }} 
         </button>
       </div>
-      @if (status() === 'ok') { <p class="text-green">Message envoyé, merci !</p> } 
-    @if (status() === 'error') { <p class="text-red">Une erreur est survenue.</p> } 
+
+      @if (status() === 'ok') { 
+        <p class="text-green-500 text-center font-medium">Message envoyé, merci !</p> 
+      } 
+      @if (status() === 'error') { 
+        <p class="text-red-500 text-center font-medium">Une erreur est survenue lors de l'envoi. Veuillez réessayer.</p> 
+      } 
 
     </form>
   </div>
