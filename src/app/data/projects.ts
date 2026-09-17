@@ -26,7 +26,7 @@ export const projects: Project[] = [
     icon: 'fa-solid fa-graduation-cap',
     demoUrl: 'https://free-bosh.vercel.app',
     githubUrl: 'https://github.com/MrAbkr19/freeBosh',
-    image: 'images/freebosh.png',
+    image: 'images/freebosh.webp',
     gradient: 'from-blue-500/20 via-cyan-500/10 to-transparent',
     color: '#3b82f6'
   },
@@ -40,7 +40,7 @@ export const projects: Project[] = [
     icon: 'fa-solid fa-utensils',
     demoUrl: 'https://delices-de-douala-zeta.vercel.app',
     githubUrl: 'https://github.com/MrAbkr19/Delices-de-douala-tp',
-    image: 'images/delices.png',
+    image: 'images/delices.webp',
     gradient: 'from-orange-500/20 via-amber-500/10 to-transparent',
     color: '#f97316'
   },
@@ -54,7 +54,7 @@ export const projects: Project[] = [
     icon: 'fa-solid fa-clock',
     demoUrl: 'https://abk-shop.vercel.app',
     githubUrl: 'https://github.com/MrAbkr19/Shop-app',
-    image: 'images/shop.png',
+    image: 'images/shop.webp',
     gradient: 'from-emerald-500/20 via-teal-500/10 to-transparent',
     color: '#10b981'
   },
@@ -68,7 +68,7 @@ export const projects: Project[] = [
     icon: 'fa-solid fa-burger',
     demoUrl: 'https://le-calao-dore-pi.vercel.app',
     githubUrl: 'https://github.com/MrAbkr19/le-calao-dore',
-    image: 'images/calao.png',
+    image: 'images/calao.webp',
     gradient: 'from-amber-500/20 via-orange-600/10 to-transparent',
     color: '#f59e0b'
   }

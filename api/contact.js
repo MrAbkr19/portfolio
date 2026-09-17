@@ -26,6 +26,9 @@ export default async function handler(req, res) {
   const OWNER = process.env.OWNER_EMAIL;   // votre adresse de réception
   console.log('Clé présente ?', !!process.env.BREVO_API_KEY);
   console.log('Longueur de la clé :', (process.env.BREVO_API_KEY || '').length);
+console.log('Sender présent ?', !!process.env.SENDER_EMAIL);
+console.log('Owner présent ?', !!process.env.OWNER_EMAIL);
+
   // 4. Fonction d'envoi via l'API Brevo
   async function sendEmail(payload) {
     const r = await fetch('https://api.brevo.com/v3/smtp/email', {
